@@ -1,0 +1,32 @@
+.task {
+    background-color: #FFF9DE;
+    width: 40%;
+    height: 175px;
+    border-radius: 5%;
+}
+
+/* TASK HEADER */
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-task-button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    display: flex;
+    margin-right: 0.5em ;
+    cursor: pointer;
+}
+
+.dot {
+    background-color: #B2AFA1;
+    height: 6px;
+    width: 6px;
+    margin-left: 2px;
+    border-radius: 50%;
+}
+
+/* TASK BOTTOM */
