@@ -3,7 +3,7 @@ import "./AddTaskModal.css"
 export default function AddTaskModal() {
   return (
     <div className="add-task-modal">
-      <AddTaskModalHeader />
+      <div className="add-task-modal-content"></div>
     </div>
   );
 }
@@ -15,3 +15,5 @@ function AddTaskModalHeader() {
   </div>
   );
 }
+
+//gibberish gibberish kill me 

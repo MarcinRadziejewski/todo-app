@@ -16,12 +16,12 @@ function App() {
   )
 }
 
-function Header({setModalOpen, modalOpen}) {
+function Header({setModalOpen}) {
 
   return (
     <header>
       <p className="logo">todo</p>
-      <button className="add-task-button" onClick={() => {setModalOpen(true); console.log(modalOpen)}}>
+      <button className="add-task-button" onClick={() => {setModalOpen(true);}}>
         <div className="vertical line"></div>
         <div className="horizontal line"></div>
       </button>
