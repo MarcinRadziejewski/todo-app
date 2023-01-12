@@ -1,4 +1,39 @@
+.add-task-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-modal-content {
+    width: 500px;
+    background-color: #fff;
+}
+
 /*MODAL HEADER*/
 
+
+/*MODAL BODY*/
+
+.task-modal-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-modal-form label {
+    font-size: 1.75rem;
+    color: #69665C;
+}
+
+.task-modal-form input {
+    background-color: #f0efea;
+    color: #69665C;
+    border: none;
+}
 
 

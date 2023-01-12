@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Task from './Task'
+import AddTaskModal from './AddTaskModal'
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -12,16 +13,17 @@ function App() {
         <TaskFilter />
         <TasksContainer />
       </div>
+      <AddTaskModal modalOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   )
 }
 
-function Header({setModalOpen}) {
+function Header({setModalOpen, modalOpen}) {
 
   return (
     <header>
       <p className="logo">todo</p>
-      <button className="add-task-button" onClick={() => {setModalOpen(true);}}>
+      <button className="add-task-button" onClick={() => setModalOpen(true)}>
         <div className="vertical line"></div>
         <div className="horizontal line"></div>
       </button>
