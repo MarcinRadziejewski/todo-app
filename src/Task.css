@@ -1,8 +1,10 @@
 .task {
     background-color: #FFF9DE;
-    width: 40%;
-    height: 175px;
+    width: 49%;
+    min-height: 175px;
     border-radius: 5%;
+    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
 /* TASK HEADER */
@@ -13,7 +15,7 @@
     align-items: center;
 }
 
-.edit-task-button {
+.task-meatballs-button {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     display: flex;
@@ -29,4 +31,60 @@
     border-radius: 50%;
 }
 
+/* TASK DESCRIPTION */
+
+.task-description {
+    display: block;
+    width: 90%;
+    min-height: auto;
+    max-height: none;
+    overflow: auto;
+}
+
+.task-description p {
+    display: inline;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* TASK BOTTOM */
+
+.task-bottom {
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-categories {
+    display: flex;
+}
+
+
+/* EDIT TASK MENU */
+
+.edit-task-dropdown {
+    position: relative;
+}
+
+.edit-task-dropdown-menu {
+    width: 9rem;
+    position: absolute;
+    top: calc(100% + .25rem);
+    right: .3rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.edit-task-dropdown-menu button {
+    height: 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: left;
+    padding: 0px 1rem;
+}
+
+.done {
+    text-decoration: line-through;
+}
