@@ -5,7 +5,11 @@ import AddTaskModal from './AddTaskModal'
 
 
 function App() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState({
+    mode: null,
+    title: null,
+    description: null,
+  });
 
   const [selectedTaskId, setSelectedTaskId] = useState(null);
 
@@ -34,8 +38,6 @@ function App() {
   const [list, setList] = useState([]);
   const [input, setInput] = useState(["", ""]);
 
-  const [editedButton, setEditedButton] = useState(null)
-
   const toggleSelectedTaskId = (id) => {
     setSelectedTaskId(prevId => prevId === id ? null : id)
   }
@@ -47,9 +49,12 @@ function App() {
   }
 
   const handleEditing = (index) => {
-    setEditedButton(index);
-    setModalOpen(true);
-    setTimeout(() => setEditedButton(null), 10000);
+    setModalOpen({
+      mode: "edit",
+      index: index,
+      title: list[index].title,
+      description: list[index].description,
+    });
   }
 
   //handleFiltering has to be called at the end of handleSelectedFilters
@@ -124,12 +129,13 @@ function App() {
       </div>
       <AddTaskModal
       modalOpen={modalOpen}
-      onClose={() => setModalOpen(false)}
+      onClose={() => setModalOpen({mode: null})}
       addTodo={addTodo}
       selectedTags={selectedTags}
       setSelectedTags={setSelectedTags}
       input={input}
-      editedButton={editedButton}
+      list={list}
+      setList={setList}
       />
       <button onClick={() => handleFiltering()}>fuck</button>
     </div>
@@ -141,7 +147,7 @@ function Header({setModalOpen}) {
   return (
     <header>
       <p className="logo">todo</p>
-      <button className="add-task-button" onClick={() => setModalOpen(true)}>
+      <button className="add-task-button" onClick={() => setModalOpen({mode: "add"})}>
         <div className="vertical line"></div>
         <div className="horizontal line"></div>
       </button>
