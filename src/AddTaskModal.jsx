@@ -1,6 +1,6 @@
 import "./AddTaskModal.css"
 
-export default function AddTaskModal( {modalOpen, onClose, input, addTodo, setSelectedTags, list, setList} ) {
+export default function AddTaskModal( {modalOpen, onClose, input, addTodo, list, setList, selectedTags, setSelectedTags} ) {
 
 
   if (modalOpen.mode === null) {
@@ -15,10 +15,22 @@ export default function AddTaskModal( {modalOpen, onClose, input, addTodo, setSe
     setList(newList);
   }
 
-  const handleSelectingTags = (e) => {
+  /*const handleSelectingTags = (e) => {
     //e.currentTarget ignores the children, e.target doesn't
     const targetText = e.currentTarget.textContent;
     setSelectedTags((prevState) => ({...prevState, [targetText]: !prevState[targetText]}))
+    e.currentTarget.classList.toggle("selected")
+  }*/
+
+  const handleSelectingTags = (e) => {
+    const targetText = e.currentTarget.textContent;
+    if (selectedTags.has(targetText))
+      selectedTags.delete(targetText)
+    else
+      selectedTags.add(targetText)
+
+    setSelectedTags(selectedTags)
+    console.log(selectedTags)
     e.currentTarget.classList.toggle("selected")
   }
 

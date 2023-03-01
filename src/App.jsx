@@ -3,6 +3,7 @@ import './App.css'
 import Task from './Task'
 import AddTaskModal from './AddTaskModal'
 
+// i have to make "list" immutable
 
 function App() {
   const [modalOpen, setModalOpen] = useState({
@@ -13,17 +14,13 @@ function App() {
 
   const [selectedTaskId, setSelectedTaskId] = useState(null);
 
-  const [selectedTags, setSelectedTags] = useState({
-    work: false,
-    study: false,
-    entertainment: false,
-    family: false
-  })
+  const [selectedTags, setSelectedTags] = useState(new Set());
 
 
   //I'm using the Set data structure here, so that I don't have to worry about duplicates
   const [selectedFiltersSet, setSelectedFiltersSet] = useState(new Set());
 
+  //Called every time when a filter button is clicked
   const handleSelectedFilters = (event) => {
     const targetTextContent = event.currentTarget.textContent;
     if (selectedFiltersSet.has(targetTextContent)) {
@@ -66,10 +63,13 @@ function App() {
         return containsAllItems;
       }
       Array.from(selectedFiltersSet).forEach(filter => {
-        if (task.filters.includes(filter)){
+        if (task.filters.has(filter)){
           containsAllItems = true
         }
+        else
+          containsAllItems = false
       })
+      console.log(list)
       return containsAllItems;
     })
     /*const newList = list.map((task) => {
@@ -92,8 +92,7 @@ function App() {
     const newTodo = {
       title: title,
       description: description,
-      filters: Object.entries(selectedTags).filter(([key, value]) => value === true)
-      .map(([key]) => key),
+      filters: selectedTags,
       done: false
     };
 
@@ -107,7 +106,7 @@ function App() {
       return input;
     });
 
-    setSelectedTags(false)
+    setSelectedTags(new Set())
     console.log(newTodo.filters)
   };
 
@@ -131,13 +130,13 @@ function App() {
       modalOpen={modalOpen}
       onClose={() => setModalOpen({mode: null})}
       addTodo={addTodo}
-      selectedTags={selectedTags}
-      setSelectedTags={setSelectedTags}
       input={input}
       list={list}
       setList={setList}
+      selectedTags={selectedTags}
+      setSelectedTags={setSelectedTags}
       />
-      <button onClick={() => handleFiltering()}>fuck</button>
+      <button onClick={() => handleFiltering()}>filter</button>
     </div>
   )
 }

@@ -30,19 +30,19 @@ function Task( {task, id, selectedTaskId, toggleSelectedTaskId, handleDeletion, 
 
       <div className="task-bottom">
         <div className="task-categories">
-          {task.filters.find(element => element === "work") === "work" ? (
+          {Array.from(task.filters).find(element => element === "work") === "work" ? (
             <div className="color p"></div>
           ): null}
 
-          {task.filters.find(element => element === "study") === "study" ? (
+          {Array.from(task.filters).find(element => element === "study") === "study" ? (
             <div className="color b"></div>
           ): null}
 
-          {task.filters.find(element => element === "entertainment") === "entertainment" ? (
+          {Array.from(task.filters).find(element => element === "entertainment") === "entertainment" ? (
             <div className="color r"></div>
           ): null}
 
-          {task.filters.find(element => element === "family") === "family" ? (
+          {Array.from(task.filters).find(element => element === "family") === "family" ? (
             <div className="color g"></div>
           ): null}
         </div>
